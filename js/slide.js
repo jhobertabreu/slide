@@ -162,6 +162,7 @@ export class SlideNav extends Slide {
     this.nextElement = document.querySelector(next);
     this.addArrowEvent();
   }
+
   addArrowEvent() {
     this.prevElement.addEventListener('click', this.activePrevSlide);
     this.nextElement.addEventListener('click', this.activeNextSlide);
@@ -169,8 +170,7 @@ export class SlideNav extends Slide {
 
   createControl() {
     const control = document.createElement('ul');
-    control.dataser.control = 'slide';
-
+    control.dataset.control = 'slide';
     this.slideArray.forEach((item, index) => {
       control.innerHTML += `<li><a href="#slide${index + 1}">${
         index + 1
@@ -189,9 +189,9 @@ export class SlideNav extends Slide {
   }
 
   activeControlItem() {
-    this.controlArray.forEach((item) => {
-      item.classList.remove(this.activeClass);
-    });
+    this.controlArray.forEach((item) =>
+      item.classList.remove(this.activeClass),
+    );
     this.controlArray[this.index.active].classList.add(this.activeClass);
   }
 
